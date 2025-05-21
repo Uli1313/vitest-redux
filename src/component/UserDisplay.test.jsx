@@ -1,11 +1,11 @@
 import { http, HttpResponse, delay } from "msw";
 import { setupServer } from "msw/node";
 import { fireEvent, screen } from "@testing-library/react";
-import { renderWithProviders } from "../../utils/test-utils";
+import { renderWithProviders } from "../utils/test-utils";
 import UserDisplay from "./UserDisplay";
 import { Provider } from "react-redux";
 import { render } from "@testing-library/react";
-import { setupStore } from "../../store/store";
+import { setupStore } from "../store/store";
 
 const handlers = [
   http.get("https://randomuser.me/api/", async () => {
@@ -13,9 +13,69 @@ const handlers = [
     return HttpResponse.json({
       results: [
         {
-          name: { first: "John", last: "Smith" },
+          gender: "male",
+          name: {
+            title: "Mr",
+            first: "John",
+            last: "Smith",
+          },
+          location: {
+            street: {
+              number: 3885,
+              name: "Prospect Rd",
+            },
+            city: "Albury",
+            state: "Western Australia",
+            country: "Australia",
+            postcode: 9813,
+            coordinates: {
+              latitude: "-86.8227",
+              longitude: "-55.4877",
+            },
+            timezone: {
+              offset: "-12:00",
+              description: "Eniwetok, Kwajalein",
+            },
+          },
+          email: "steven.sanders@example.com",
+          login: {
+            uuid: "ec06a0fa-c6f1-4a71-8bf3-de8f5c576f4a",
+            username: "whiteduck844",
+            password: "pink",
+            salt: "Xy8fQBfq",
+            md5: "732212bb81c142ab77cae47247cff71c",
+            sha1: "471ae59d424084506dbd38e969ed8aa6006748eb",
+            sha256:
+              "acb092b170245abd1ff0430ecd0c0fc84f43890931f9bf1fb22651fe2fa10a0d",
+          },
+          dob: {
+            date: "1996-06-17T23:44:53.503Z",
+            age: 28,
+          },
+          registered: {
+            date: "2012-05-08T22:45:07.706Z",
+            age: 13,
+          },
+          phone: "03-7344-9260",
+          cell: "0477-287-245",
+          id: {
+            name: "TFN",
+            value: "552614663",
+          },
+          picture: {
+            large: "https://randomuser.me/api/portraits/men/99.jpg",
+            medium: "https://randomuser.me/api/portraits/med/men/99.jpg",
+            thumbnail: "https://randomuser.me/api/portraits/thumb/men/99.jpg",
+          },
+          nat: "AU",
         },
       ],
+      info: {
+        seed: "c99e2af14e3c9efc",
+        results: 1,
+        page: 1,
+        version: "1.4",
+      },
     });
   }),
 ];

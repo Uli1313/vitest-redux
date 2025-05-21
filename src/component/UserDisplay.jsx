@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import {
   fetchUser,
   selectUserName,
   selectUserFetchStatus,
-} from "../../store/userSlice";
+} from "../store/userSlice";
 
 export default function UserDisplay() {
   const dispatch = useAppDispatch();
